@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- editado con XMLSpy v2015 rel. 4 sp1 (x64) (http://www.altova.com) por JOSÉ ALFONSO SÁNCHEZ (Universidad Nacional de Colombia) -->
+<!--Created with Liquid XML 2014 Designer Edition (Trial) 12.2.5.5293 (http://www.liquid-technologies.com)-->
+<xs:schema xmlns:iopun="http://interoperabilidad.unal.edu.co/WS/Schemas/Terceros" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://interoperabilidad.unal.edu.co/WS/Schemas/Terceros" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="EsquemasTiposMensajes.xsd"/>
+	<xs:element name="elemSolicitudReplicaTercero" type="iopun:tipoMsjSolicitudPorIdTercero"/>
+	<xs:element name="elemRespuestaReplicaTercero" type="iopun:tipoMsjRespuestaOp"/>
+	<xs:element name="elemConsultaTercero" type="iopun:tipoMsjSolicitudPorIdTercero"/>
+	<xs:element name="elemRespuestaConsultaTercero" type="iopun:tipoMsjTercero"/>
+	<xs:element name="elemConsultaExistenciaTercero" type="iopun:tipoMsjSolicitudPorIdTercero"/>
+	<xs:element name="elemRespuestaExistenciaTercero" type="iopun:tipoMsjRespuestaExistencia"/>
+	<xs:element name="elemSolicitudCreacionTercero" type="iopun:tipoMsjTercero"/>
+	<xs:element name="elemRespuestaCreacionTercero" type="iopun:tipoMsjRespuestaOp"/>
+	<xs:element name="elemSolicitudActualizacionTercero" type="iopun:tipoMsjTercero"/>
+	<xs:element name="elemRespuestaActualizacionTercero" type="iopun:tipoMsjRespuestaOp"/>
+	<xs:element name="elemSolicitudCreacionActualizacionTercero" type="iopun:tipoMsjTercero"/>
+	<xs:element name="elemRespuestaCreacionActualizacionTercero" type="iopun:tipoMsjRespuestaOp"/>
+	<xs:element name="elemRespuestaEmpleado" type="iopun:tipoMsjRespuestaEmpleado"/>
+	<xs:element name="elemConsultaEmpleadoPorIdTercero" type="iopun:tipoMsjSolicitudPorIdTercero"/>
+	<xs:element name="elemRespuestaCabeceraContratos" type="iopun:tipoMsjRespuestaCabeceraContratos"/>
+	<xs:element name="elemConsultaPorTipoVinculacion" type="iopun:tipoMsjSolicitudPorTipoVinculacion"/>
+	<xs:element name="elemRespuestaCabeceraContratosNacional" type="iopun:tipoMsjRespuestaCabeceraContratos"/>
+	<xs:element name="elemConsultaCabeceraContrato" type="iopun:tipoMsjSolicitudPorIdTercero"/>
+	<xs:element name="elemRespuestaCrearReemplazarDocente" type="iopun:tipoMsjRespuestaOp"/>
+	<xs:element name="elemSolicitudCreacionDocente" type="iopun:tipoMsjRespuestaEmpleado"/>
+	<xs:element name="elemSolicitudActualizacionDocente" type="iopun:tipoMsjRespuestaEmpleado"/>
+	<xs:element name="elemExistenciaDocente" type="iopun:tipoMsjSolicitudPorIdTercero"/>
+	<xs:element name="elemRespuestaExistenciaDocente" type="iopun:tipoMsjRespuestaExistencia"/>
+	<xs:element name="elemRespuestaConsultaDetalleEmpleado" type="iopun:tipoMsjDetalleContratos"/>
+	<xs:element name="elemSolicitudContableNomina" type="iopun:tipoArchivo"/>
+	<xs:element name="elemRespuestaSolicitudContableNomina" type="iopun:tipoRespuestaOp"/>
+	<xs:element name="elemSolicitudRubro" type="iopun:tipoMsjConsultaRubro"/>
+	<xs:element name="elemRespuestaRubro" type="iopun:tipoMsjRespuestaRubro"/>
+	<xs:element name="elemSolicitudHomologAreaResponsabilidad" type="iopun:tipoMsjSolicitudHomlogArea"/>
+	<xs:element name="elemRespuestaHomologAreaResponsabilidad" type="iopun:tipoMsjRespuestaHomologArea"/>
+	<xs:element name="elemSolicitudHomologConceptoPresupuesto" type="iopun:tipoMsjSolicitudHomologConceptoPresupuesto"/>
+	<xs:element name="elemRespuestaHomologConceptoPresupuesto" type="iopun:tipoMsjRespuestaHomologConceptoPresupuesto"/>
+	<xs:element name="elemSolicitudEstadoCargueNomina" type="iopun:tipoMsjSolicitudEstadoCargueNomina"/>
+	<xs:element name="elemRespuestaEstadoNomina" type="iopun:tipoMsjRespuestaEstadoNomina"/>
+	<xs:element name="elemConsultaEstudiante" type="iopun:tipoMsjSolicitudPorIdTercero"/>
+	<xs:element name="elemRespuestaConsultaEstudiante" type="iopun:tipoMsjRespuestaConsultaEstudiante"/>
+	<xs:element name="elemRespuestaDetalleEstudiante" type="iopun:tipoMsjRespuestaDetalleEstudiante"/>
+	<xs:element name="elemConsultaDetalleDocente" type="iopun:tipoMsjSolicitudPorIdTercero"/>
+	<xs:element name="elemRespuestaDetalleDocente" type="iopun:tipoMsjrespuestaDetalleDocente"/>
+	<xs:element name="elemCargaArchivoPlanoNomina" type="iopun:tipoMsjSolicitudCargaArchivoNomina"/>
+	<xs:element name="elemRespuestaCargaArchivoPlano" type="iopun:tipoMsjRespuestaOp"/>
+	<xs:element name="elemSolicitudContratosTercero" type="iopun:tipoMsjSolicitudContrato"/>
+	<xs:element name="elemRespuestaContratostercero" type="iopun:tipoMsjRespuestaContratos"/>
+</xs:schema>
