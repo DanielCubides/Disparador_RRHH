@@ -26,7 +26,7 @@
 			        chov_estadocivil as estadoCivil,            
 			        telefono as telefono,
 				    chov_email as email,
-				    barrio as direccion,
+				    direcciondian as direccion,
 				    codciudad as ciudadResidencia
 			 from hojavida_hov,
 			      vu_residenciahv
