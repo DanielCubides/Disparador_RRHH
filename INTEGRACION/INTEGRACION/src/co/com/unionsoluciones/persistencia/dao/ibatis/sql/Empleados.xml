@@ -91,15 +91,10 @@
 	<select id="obtenerCiudadUNAL" parameterClass="ciudadDTO" resultClass="ciudadDTO">
 		select ciudadsoa as ciudadSoa,
 			   ciudadsara as ciudadSara
-	   from vu_unalintegracionciudad
-		<dynamic prepend="where">
-			<isNotNull prepend="and" property="ciudadSoa">
-				ciudadsoa = #ciudadSoa#
-			</isNotNull>
-			<isNotNull prepend="and" property="ciudadSara">
-				ciudadsara = #ciudadSara#
-			</isNotNull>
-		</dynamic>
+	   from ubicaciongeo_ubg ciud,
+	   where ciud.cubg_tipoubicacion ='CIUD'
+           and ciud.cubg_ubicacion = #ubicacion#
+		
 	</select>
 	
 	<select id="obtenerPaisUNAL" parameterClass="paisDTO" resultClass="paisDTO">
