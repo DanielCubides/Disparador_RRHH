@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:iopun="http://interoperabilidad.unal.edu.co/WS/Schemas/Terceros" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://interoperabilidad.unal.edu.co/WS/Schemas/Terceros">
+    <xs:include schemaLocation="EsquemasTiposBasicos.xsd"/>
+    <xs:include schemaLocation="EsquemasTiposComplejos.xsd"/>
+    <xs:complexType name="tipoMsjRespuestaExistencia">
+        <xs:annotation>
+            <xs:documentation>tipo de mensaje para dar la respuesta de la existencia o no de una entidad para interop</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="iopun:tipoMsjGenerico">
+                <xs:sequence>
+                    <xs:element name="confirmacionExistencia" type="iopun:tipoConfirmacionExistencia"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="tipoMsjSolicitudPorIdTercero">
+        <xs:annotation>
+            <xs:documentation>tipo de mensaje para la solicitud de un tercero por su id para interop</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="iopun:tipoMsjGenerico">
+                <xs:sequence>
+                    <xs:element name="idTercero" type="iopun:tipoIdTercero"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="tipoMsjRespuestaOp">
+        <xs:annotation>
+            <xs:documentation>tipo de mensaje para la solicitud de un tercero por su id para interop</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="iopun:tipoMsjGenerico">
+                <xs:sequence>
+                    <xs:element name="respuestaOP" type="iopun:tipoRespuestaOp"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="tipoMsjTercero">
+        <xs:annotation>
+            <xs:documentation>tipo de mensaje para la información de un tercero para interop</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="iopun:tipoMsjGenerico">
+                <xs:sequence maxOccurs="unbounded">
+                    <xs:element name="Tercero" type="iopun:tipoTercero"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="tipoMsjRespuestaEmpleado">
+        <xs:annotation>
+            <xs:documentation>tipo de mensaje para la respuesta de un empleado para interop</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="iopun:tipoMsjGenerico">
+                <xs:sequence>
+                    <xs:element name="empleado" type="iopun:tipoEmpleado"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="tipoMsjGenerico">
+        <xs:annotation>
+            <xs:documentation>tipo de mensaje generico para interop</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="infoMensaje" type="iopun:tipoInfoMensaje"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tipoInfoMensaje">
+        <xs:annotation>
+            <xs:documentation>tipo de mensaje con informacion de seguimiento para trazabilidad de los mensajes en interop</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="idSistema" type="iopun:tipoIdSistema"/>
+            <xs:element name="idSede" type="iopun:tipoIdSede"/>
+            <xs:element name="fechaHora" type="iopun:tipoFechaHora"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="tipoMsjRespuestaCabeceraContratos">
+        <xs:annotation>
+            <xs:documentation>tipo de mensaje con la respuesta para las cabeceras de los contratos en interop</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="iopun:tipoMsjGenerico">
+                <xs:sequence maxOccurs="unbounded">
+                    <xs:element name="elemCabeceraContrato" type="iopun:tipoCabeceraContrato"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="tipoMsjSolicitudPorTipoVinculacion">
+        <xs:annotation>
+            <xs:documentation>tipo de mensaje para la solicitud de informacion por tipo de vinculacion de un empleado en interop</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="iopun:tipoMsjGenerico">
+                <xs:sequence maxOccurs="unbounded">
+                    <xs:element name="elemTipoVinculacion" type="iopun:tipoTipoVinculacion"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="tipoMsjDocente">
+        <xs:complexContent>
+            <xs:extension base="iopun:tipoMsjGenerico">
+                <xs:sequence>
+                    <xs:element name="docente" type="iopun:tipoDocente"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="tipoMsjDetalleContratos">
+        <xs:complexContent>
+            <xs:extension base="iopun:tipoMsjGenerico">
+                <xs:sequence maxOccurs="unbounded">
+                    <xs:element name="elemDetallesContratos" type="iopun:tipoDetalleContrato"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+</xs:schema>

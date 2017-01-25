@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+
+	<settings useStatementNamespaces="true" />
+	<typeHandler javaType="boolean" jdbcType="CHAR" callback="co.com.unionsoluciones.persistencia.dao.ibatis.config.handler.YesNoBoolTypeHandlerCallback" />
+	
+	<transactionManager type="JDBC">
+		<dataSource type="JNDI">
+			<property name="DataSource" value="java:/comp/env/jdbc/SaraIntegracionDS" />
+		</dataSource>
+	</transactionManager>
+		
+    <sqlMap	resource="co/com/unionsoluciones/persistencia/dao/ibatis/sql/Empleados.xml" />
+
+</sqlMapConfig>

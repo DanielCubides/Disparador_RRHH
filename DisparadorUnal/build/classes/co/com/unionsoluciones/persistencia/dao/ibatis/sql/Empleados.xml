@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Empleado">
+
+  <typeAlias alias="empleadoDTO" type="co.com.unionsoluciones.servicios.dto.EmpleadoDTO"/>
+  <typeAlias alias="sedeDTO" type="co.com.unionsoluciones.servicios.dto.SedeDTO"/>
+  
+  
+	<select id="obtenerEmpleadoVinculado" parameterClass="empleadoDTO" resultClass="empleadoDTO">
+	    select meml_identifica     as contrato,
+	           meml_hojavida       as cedula,
+	           chov_tipodocumento as tipoDocumento,
+	           (select documentosoa from vu_unalintegraciontipodoc where hojavida_hov.chov_tipodocumento=documentosara) as tipoDocumentoSoa,
+	           ceml_unidad         as unidad,
+	           ceml_zonaeconomica  as zonaEconomica,
+	           ceml_centrocosto    as centroCosto,
+	           ceml_cargo          as cargo,
+	           neml_vinculacion    as vinculacion,
+	           deml_ingreso        as fechaIngreso,
+	           deml_retiro         as fechaRetiro,
+	           deml_engache        as fechaEngache,
+	           deml_termina        as fechaTermina,
+	           neml_prorroga       as numeroProrroga,
+	           meml_sueldo         as asignacion,
+	           deml_sueldodesde    as fechaVigencia,
+	           meml_sueldoantes    as totalAsignacion,
+	           ceml_estadolaboral  as estadoLaboral,
+	           ceml_lineacosto     as lineaCosto,
+	           neml_tipoperiodo    as tipoPeriodo,
+	           neml_turno          as turno,
+	       	   neml_turnofuncion as turnoFuncion,
+	           deml_liquidacion    as fechaLiquidacion,
+	           ceml_cargofuncion   as cargoFuncion,
+	           ceml_unidadfuncion  as unidadFuncion,
+	           neml_empresa        as empresa,
+	           ceml_ubicacionfis   as ubicacionfisica,
+	           ceml_alterno        as alterno,
+	           meml_cupo           as cupo,
+	           deml_congela        as fechaCongela,
+	           meml_contratoant    as contratoAnt,
+	           neml_empresaant     as empresaAnt,
+	           
+	           deml_adicionado	   as adicionado,
+	           deml_modificado	   as modificado,
+	           FECHAMODIFICADO     as modificadohv
+	           	           
+	  	  from empleado_eml,
+	  	       hojavida_hov
+	     where meml_hojavida=mhov_identifica
+	  	   and mhov_identifica != 0
+	  	   and (
+	  	   		(
+					deml_adicionado <![CDATA[ > ]]> #fechaInicial:TIMESTAMP#
+	  	   		and 
+	  	   			deml_adicionado <![CDATA[ <= ]]> #fechaFinal:TIMESTAMP# 
+	  	   		)
+	  	   		OR
+	  	   		(
+	  	   		<isNotNull property="fechaInicial">
+					deml_modificado <![CDATA[ > ]]> #fechaInicial:TIMESTAMP#
+				</isNotNull>
+	  	   		and 
+	  	   		<isNotNull property="fechaInicial">
+					deml_modificado	 <![CDATA[ <= ]]> #fechaFinal:TIMESTAMP#
+				</isNotNull>
+	  	   		)	
+	  	   		OR
+	  	   		(
+					fechamodificado <![CDATA[ > ]]> #fechaInicial:TIMESTAMP#
+
+	  	   		and 
+	  	   			fechamodificado <![CDATA[ <= ]]> #fechaFinal:TIMESTAMP# 
+	  	   		)
+	  	   	)
+	</select>
+	
+	<select id="obtenerSedeUNAL" parameterClass="sedeDTO" resultClass="sedeDTO">
+		<!-- select sede as sede, where campo = "campo" -->
+		select sede as sede,
+		       aplicativo as aplicativo
+	      from vu_unalintegracionsede
+	      where tipoPeriodo <![CDATA[ = ]]> #tipoPeriodo#
+	</select>		
+</sqlMap>
