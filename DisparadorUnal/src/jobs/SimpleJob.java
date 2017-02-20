@@ -98,13 +98,13 @@ public class SimpleJob implements Job {
             			tipoIdTercero.setNumeroDocumento(tipoNumeroDocumento);
             			tipoIdTercero.setTipoDocumento(TipoTipoDocumento.Factory.fromValue(unEmpleadoVincula.getTipoDocumentoSoa()));
             			
-//            			System.out.println("Contrato Adicionado: " + unEmpleadoVincula.getAdicionado());
-//            			System.out.println("Contrato Modificado: " + unEmpleadoVincula.getModificado());
-//            			System.out.println("Hoja Vida Modificada: " + unEmpleadoVincula.getModificadohv());
-//            			System.out.println(sede.getSede().toString());
-//            			System.out.println(tipoIdTercero.getTipoDocumento().toString());
-//            			System.out.println(tipoIdTercero.getNumeroDocumento().toString());
-//            			System.out.println(unEmpleadoVincula.getContrato().toString()); 
+            			System.out.println("Contrato Adicionado: " + unEmpleadoVincula.getAdicionado());
+            			System.out.println("Contrato Modificado: " + unEmpleadoVincula.getModificado());
+            			System.out.println("Hoja Vida Modificada: " + unEmpleadoVincula.getModificadohv());
+            			System.out.println(sede.getSede().toString());
+            			System.out.println(tipoIdTercero.getTipoDocumento().toString());
+            			System.out.println(tipoIdTercero.getNumeroDocumento().toString());
+            			System.out.println(unEmpleadoVincula.getContrato().toString()); 
             			tipoMsjSolicitudPorIdTercero.setIdTercero(tipoIdTercero);
             			
             			
