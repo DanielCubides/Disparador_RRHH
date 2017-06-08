@@ -149,4 +149,14 @@
 	      from vu_unalintegracionsede
 	</select>
 	
+	<!-- 	llamar a un  procedimiento -->
+	<parameterMap id="CedulaCall" class="map">
+      <parameter property="Cedula" jdbcType="NUMERIC" javaType="java.lang.Integer" mode="INOUT"/>
+   </parameterMap>	
+   
+   <procedure id="CalcularViaticos" parameterMap="CedulaCall">
+      { call PS_VIATICOINTEROPERA( #Cedula# ) } 
+   </procedure>
+	
+   
 </sqlMap>

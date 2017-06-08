@@ -8,6 +8,7 @@ package co.edu.unal.interoperabilidad.ws.gestionempleado;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -84,6 +85,8 @@ import co.edu.unal.interoperabilidad.ws.schemas.terceros.TipoTipoVinculacion;
 import co.edu.unal.interoperabilidad.ws.schemas.terceros.TipoUbicacion;
 import co.edu.unal.interoperabilidad.ws.schemas.terceros.TipoValorMonetario;
 
+
+
 /**
  * ServicioGestionEmpleadoSkeleton java skeleton for the axisService
  */
@@ -157,7 +160,7 @@ public class ServicioGestionEmpleadoSkeleton {
 		if(documento == null){
 		  throw new Exception("no existe documento homologado");
 		}
-			
+		
 		EmpleadoDTO empleadoDTO=new EmpleadoDTO();
 		empleadoDTO.setTipoDocumento(documento.getDocumentoSara());
 		empleadoDTO.setNumeroDocumento(elemConsultaTercero.getElemConsultaTercero().getIdTercero().getNumeroDocumento().toString());
@@ -177,6 +180,7 @@ public class ServicioGestionEmpleadoSkeleton {
 		ContratoDTO contratoDTO=new ContratoDTO();
 		contratoDTO.setTipoDocumento(documento.getDocumentoSara());
 		contratoDTO.setNumeroDocumento(elemConsultaTercero.getElemConsultaTercero().getIdTercero().getNumeroDocumento().toString());
+		
 		listaContrato = (List<ContratoDTO>) entity.queryForList(DataSourceIbatis.getDataSourceSOA(), "Empleado.obtenerContratoTerceroUNAL", contratoDTO);
 			
 		TipoInfoContrato tipoInfoContrato=new TipoInfoContrato();
@@ -451,6 +455,7 @@ public class ServicioGestionEmpleadoSkeleton {
 		return tipoInfoContacto;
 	}
 
+	//Este metodo debe ajustarse para la concatenación de los nombres correctamente
 	private NomTercero_type0 cargarNombre(EmpleadoDTO empleadoDTO) {
 		NomTercero_type0 nombre = new NomTercero_type0();
 		TipoNombrePersonaNatural tipoNombrePersonaNatural = new TipoNombrePersonaNatural();
@@ -459,9 +464,16 @@ public class ServicioGestionEmpleadoSkeleton {
 			TipoPrimerNombre tipoPrimerNombre= new TipoPrimerNombre();
 			tipoPrimerNombre.setTipoPrimerNombre(datos[0]);
 			tipoNombrePersonaNatural.setPrimerNombre(tipoPrimerNombre);
+			System.out.println(datos.length);
 			if (datos.length > 1) {
+				
+				String segundoNombre = "";
+				for( int i = 1; i < datos.length; i++)
+				{
+					segundoNombre = segundoNombre + " " + datos[i]; 
+				}
 				TipoSegundoNombre tipoSegundoNombre= new TipoSegundoNombre();
-				tipoSegundoNombre.setTipoSegundoNombre(datos[1]);
+				tipoSegundoNombre.setTipoSegundoNombre(segundoNombre);
 				tipoNombrePersonaNatural.setSegundoNombre(tipoSegundoNombre);
 			}else{
 				TipoSegundoNombre tipoSegundoNombre= new TipoSegundoNombre();
@@ -620,6 +632,7 @@ public class ServicioGestionEmpleadoSkeleton {
 		tipoValorMonetario.setTipoValorMonetario(contrato.getSueldo());
 		tipoMontoMonetario.setValor(tipoValorMonetario);
 		tipoDetalleContrato.setAsignacionBasica(tipoMontoMonetario);
+		System.out.print("Asignación Basica: " + tipoDetalleContrato.getAsignacionBasica().getValor());
 		tipoDetalleContrato.setCargoEmpleado(TipoCargoEmpleado.Factory.fromValue(contrato.getCargo().trim()));
 		tipoDetalleContrato.setDedicacion(TipoDedicacion.Factory.fromValue(new Integer(contrato.getTurno())));
 
